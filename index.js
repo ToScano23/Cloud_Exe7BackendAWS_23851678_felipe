@@ -1,5 +1,6 @@
 const express = require("express");
 const uuid = require("uuid");
+const cors = require('cors')
 
 
 const livros = [];
@@ -28,5 +29,6 @@ livrosRouter.post("/", (req, res) => {
 
 const app = express();
 app.use(express.json())
+app.use(cors())
 app.use("/livros", livrosRouter);
 app.listen(3000);
