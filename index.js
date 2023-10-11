@@ -17,7 +17,7 @@ livrosRouter.post("/", (req, res) => {
   const livro = {
     id: uuid.v4(),
     titulo: req.body.titulo,
-    descricao: req.body.descricao,
+    edicao: req.body.edicao,
     autor: req.body.autor,
   };
 
