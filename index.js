@@ -35,7 +35,7 @@ livrosRouter.put("/", (req, res) => {
     autor: req.body.autor,
   };
 
-  livros.push(livro);
+  livros.put(livro);
 
   res.status(201).json(livro);
 });
@@ -46,7 +46,7 @@ livrosRouter.delete("/", (req, res) => {
     id: req.body.id
   };
 
-  livros.push(livro);
+  livros.delete(livro);
 
   res.status(201).json(livro);
 });
