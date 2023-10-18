@@ -37,7 +37,7 @@ livrosRouter.put("/", (req, res) => {
   if (!livro) {
     return res.status(404).json({ error: "Livro não encontrado! Verifique o id" });
   }
-  
+
   //Atualizar as propriedades do livro, conforme id e requisição
   livro.titulo = req.body.titulo;
   livro.edicao = req.body.edicao;
@@ -46,15 +46,22 @@ livrosRouter.put("/", (req, res) => {
   res.status(200).json(livro);
 });
 
-//DELETE
+//DELETE-NEW
 livrosRouter.delete("/", (req, res) => {
-  const livro = {
-    id: req.body.id
-  };
+  //Id do livro no corpo da requisição
+  const livroId = req.body.id;
+  //Procura o livro
+  const livro = livros.findIndex((livro)=> livro.id === livroId);
+  
+  //Livro não encontrado
+  if (livro === -1) {
+    return res.status(404).json({ error: "Livro não encontrado! Verifique o id" });
+  }
+  
+  //Deletar o livro, conforme id
+  livros.splice(livro, 1);
 
-  livros.delete(livro);
-
-  res.status(201).json(livro);
+  res.status(200).json({message: "Livro deletado com sucesso!"});
 });
 
 
