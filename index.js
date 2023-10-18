@@ -26,6 +26,31 @@ livrosRouter.post("/", (req, res) => {
   res.status(201).json(livro);
 });
 
+//PUT
+livrosRouter.put("/", (req, res) => {
+  const livro = {
+    id: req.body.id,
+    titulo: req.body.titulo,
+    edicao: req.body.edicao,
+    autor: req.body.autor,
+  };
+
+  livros.push(livro);
+
+  res.status(201).json(livro);
+});
+
+//DELETE
+livrosRouter.delete("/", (req, res) => {
+  const livro = {
+    id: req.body.id
+  };
+
+  livros.push(livro);
+
+  res.status(201).json(livro);
+});
+
 
 const app = express();
 app.use(express.json())
